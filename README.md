@@ -1,8 +1,33 @@
+# NOTICE:
+The project is not yet uploaded. Awaiting some final changes before being uploaded. 
+Currently, only the README is here
+
+
+---
+
+
 # Ready Set Fractals
 
 Ready Set Fractals aims to create a simple way to design, generate, and explore Mandelbrot and Julia Set Fractals. By providing a simple yet extensive interface, this project aims to give the user a variety of options when it comes to generating a set fractal and exploring it. 
 
-##Requirements
+## Features
+
+### Current
+- Generate julia set fractals
+- Output image is a BMP image
+- Image color can even be B&W or RGB colors
+
+### Future
+- Generate mandlebrot fractals
+- Be able to handle Multi-GPU
+- Better way to get RGB colors
+- Expand coloring to a HSV model to give more options for the coloring of the fractal
+- A web interface / GUI for creating and viewing the fractals
+- Multi-OS compatibility
+
+
+
+## Requirements
 Currently this project has only been testing on Linux systems, but work is being done to make it work on all systems. 
 System Requirements:
 
@@ -28,8 +53,12 @@ Here is a list of all external libraries used to make this program.
  - [CUDA Toolkit 7.5](https://developer.nvidia.com/cuda-toolkit)
  - [QDBMP (Quick and Dirty Bitmap)](http://qdbmp.sourceforge.net/)
  
-##Project TODO list
-
+##Project TODO List
+- [ ] Finalize settings input file
+- [ ] Add CUDA error checking
+- [ ] Adding Mandlebrot Set Fractals
+- [ ] Add multi-GPU support
+- [ ] Create GUI or Web Interface 
 
 ## History
 
@@ -41,4 +70,4 @@ My teacher for inspiring me to create this.
 
 ## License
 
-TODO: Write license
+See [LICENSE](https://github.com/asclines/ReadySetFractals/blob/master/LICENSE "MIT License")
