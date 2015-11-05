@@ -1,11 +1,3 @@
-# NOTICE:
-The project is not yet uploaded. Awaiting some final changes before being uploaded. 
-Currently, only the README is here
-
-
----
-
-
 # Ready Set Fractals
 
 Ready Set Fractals aims to create a simple way to design, generate, and explore Mandelbrot and Julia Set Fractals. By providing a simple yet extensive interface, this project aims to give the user a variety of options when it comes to generating a set fractal and exploring it. While not all of these goals have been met yet, they will be. Check out the features section below to see what is done and what is coming up.
