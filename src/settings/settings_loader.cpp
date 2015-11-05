@@ -105,7 +105,7 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	stream << settings_list[1];
 	stream >> settings_int_value_holder;
 	if(stream.fail()){
-		std::cout << "Invalid settings value for image-dimmension-width" << std::endl;
+		std::cout << "Invalid settings value for image-dimension-width" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}
 	stream.clear();
@@ -115,7 +115,7 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	stream << settings_list[3];
 	stream >> settings_int_value_holder;
 	if(stream.fail()){
-		std::cout << "Invalid settings value for image-dimmension-height" << std::endl;
+		std::cout << "Invalid settings value for image-dimension-height" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}
 	stream.clear();
