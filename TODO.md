@@ -1,5 +1,6 @@
 #ReadySetFractals Roadmap #
 ---
+
 ## Work In Progress #
 ---
 - Optimize GPU usage for single GPU
@@ -10,11 +11,13 @@
 ## Under Review #
 ---
 
+
 ## Done #
 ---
 - Generate julia set fractals
 - Output image is a BMP image
 - Image color can be B&W or RGB colors
+
 
 ## Future Ideas #
 ---
