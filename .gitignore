@@ -1,0 +1,4 @@
+src/image.bmp
+*.o
+src/fractal
+*.sh
