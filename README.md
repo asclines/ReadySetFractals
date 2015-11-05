@@ -15,7 +15,7 @@ Ready Set Fractals aims to create a simple way to design, generate, and explore 
 ### Current
 - Generate julia set fractals
 - Output image is a BMP image
-- Image color can even be B&W or RGB colors
+- Image color can be B&W or RGB colors
 
 ### Future
 - Generate mandlebrot fractals
@@ -51,13 +51,6 @@ Here is a list of all external libraries used to make this program.
  - [CUDA Toolkit 7.5](https://developer.nvidia.com/cuda-toolkit)
  - [QDBMP (Quick and Dirty Bitmap)](http://qdbmp.sourceforge.net/)
  
-##Project TODO List
-- [ ] Finalize settings input file
-- [ ] Add CUDA error checking
-- [ ] Adding Mandlebrot Set Fractals
-- [ ] Add multi-GPU support
-- [ ] Create GUI or Web Interface 
-
 ## History
 
 This project was initially a class assignment in a Mathematics course I took at Texas Tech University. The assignment was to write a program in CUDA that created a Julia Set Fractal image. I have since taken that assignment and extended its capabilities.
