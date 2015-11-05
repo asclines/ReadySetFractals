@@ -1,4 +1,6 @@
-src/image.bmp
 *.o
-src/fractal
 *.sh
+
+src/fractal
+src/image.bmp
+src/run_log.txt
