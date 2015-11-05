@@ -8,7 +8,7 @@ Currently, only the README is here
 
 # Ready Set Fractals
 
-Ready Set Fractals aims to create a simple way to design, generate, and explore Mandelbrot and Julia Set Fractals. By providing a simple yet extensive interface, this project aims to give the user a variety of options when it comes to generating a set fractal and exploring it. 
+Ready Set Fractals aims to create a simple way to design, generate, and explore Mandelbrot and Julia Set Fractals. By providing a simple yet extensive interface, this project aims to give the user a variety of options when it comes to generating a set fractal and exploring it. While not all of these goals have been met yet, they will be. Check out the features section below to see what is done and what is coming up.
 
 ## Features
 
@@ -39,13 +39,11 @@ System Requirements:
 ## Installation
 
 To install the standalone program to generate a fractal on a Linux machine, it is recommended to use the makefile included in the project. 
-`make install` will install the program at which point it can be run with `./program`
+`make install` will install the program at which point it can be run with `./fractal`
 
 ## Usage
-There are two ways to use this program. 
-
- 1. You can just run the program with `./program`and follow the on screen instructions OR
- 2. You can modify the **settings.txt** to have your fractal specifications there and feed them into the program like so `./program < settings.txt`
+Open up **settings.txt** to change the fractal settings to meet your preferences. 
+A detailed guide on the settings file is provided here:
 
 ##Libraries 
 Here is a list of all external libraries used to make this program.
