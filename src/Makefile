@@ -1,6 +1,6 @@
 #Compiler
 CC = nvcc
-ID = -I /usr/local/include #for location of qdbmp
+ID = -I ./include #for location of qdbmp
 IN = -I ./ #for internal files
 DB = -g -G
 
