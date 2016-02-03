@@ -3,9 +3,9 @@
 
 #include <cuda.h>
 
-namespace fractal_kernel{
+namespace fractal_generator{
 
-
+__device__ 
 
 
 
