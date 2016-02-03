@@ -2,11 +2,12 @@
 #define JULIA_SET_H
 
 #include <string>
+#include <complex/complex.h>
 
 namspace fractal_generator{
 
 typedef unsigned int uint;
-
+typedef Complex<double> complex;
 
 
 enum class FRACTAL{
@@ -32,26 +33,18 @@ struct ColorSettings{
 	bool is_bw;
 };
 
-struct Point{
-	Point():
-		real(1),
-		imag(1)
-		{}
-	double real;
-	double imag;
-};
-
 //Should only contain data the kernel needs
 struct FractalSettings{
 	FractalSettings():
 		FRACTAL_TYPE(JULIA),
+		complex_num(1,1),
 		dimm(512),
 		escape_value(2),
 		max_iterations(10)
 		{}
 	FRACTAL_TYPE type;
 	GraphSettings graph_settings;
-	Point point;
+	complex complex_num;
 	int dimm;
 	int escape_value;
 	int iterations;
