@@ -21,12 +21,10 @@ struct GraphSettings{
 	double y_offset;
 };
 
-struct ImageSettings{
-	ImageSettings():
-		dimm(512),
+struct ColorSettings{
+	ColorSettings():
 		is_bw(true)
 		{}
-	int dimm;
 	bool is_bw;
 };
 
@@ -39,23 +37,25 @@ struct Point{
 	double imag;
 };
 
+//Should only contain data the kernel needs
 struct FractalSettings{
 	FractalSettings():
 		FRACTAL_TYPE(JULIA),
+		dimm(512),
 		escape_value(2),
 		max_iterations(10)
 		{}
 	FRACTAL_TYPE type;
 	GraphSettings graph_settings;
-	ImageSettings image_settings;
 	Point point;
+	int dimm;
 	int escape_value;
 	int iterations;
 };
 
 
 //Returns filename
-std::string GenerateFractal(FractalSettings settings);
+std::string GenerateFractal(FractalSettings fractal_settings,ColorSettings color_settings);
 
 
 
