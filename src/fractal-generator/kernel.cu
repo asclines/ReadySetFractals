@@ -1,7 +1,7 @@
 #include "kernel.h"
 
 
-namespace fractal_kernel{
+namespace fractal_generator{
 
 
 <template FRACTAL type>

@@ -5,7 +5,7 @@
 
 #include <cuda.h>
 
-namespace fractal_kernel{
+namespace fractal_generator{
 
 <template FRACTAL type>
 __global__ void SetPixels(FractalSettings settings);
