@@ -5,6 +5,10 @@
 
 namspace fractal_generator{
 
+typedef unsigned int uint;
+
+
+
 enum class FRACTAL{
 	JULIA
 };
