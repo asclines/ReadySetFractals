@@ -17,7 +17,7 @@ __device__ void GetPixels(
 );
 
 //Determines point from pixels,radius, offsets and dimmensions, handes transformations
-__device__ void GetPoint(
+__device__ double GetPoint(
 	uint *pixel_ptr,
 	double *radius_ptr,
 	int *dimm_ptr,
@@ -28,8 +28,8 @@ __device__ void GetPoint(
 
 
 
-}
+} //End namepsace
 
-
+#include "kernel.cu"
 
 #endif

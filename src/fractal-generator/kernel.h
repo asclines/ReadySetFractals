@@ -7,11 +7,12 @@
 
 namespace fractal_generator{
 
-<template FRACTAL type>
-__global__ void SetPixels(FractalSettings settings);
+template<FRACTAL type>
+__global__ void SetPixels(FractalSettings settings, SetPixelsResults *results_ptr);
 
 
 } //End namespace
 
+#include "kernel.inl"
 
 #endif

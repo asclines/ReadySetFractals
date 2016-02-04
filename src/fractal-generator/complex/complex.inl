@@ -44,5 +44,4 @@ __both__ Complex<T> Complex<T>::operator*(const Complex<T>& other)const{
         return result;
 };
 
-#undef __both__
-~                   
+#undef __both__                

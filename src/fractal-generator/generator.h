@@ -2,9 +2,9 @@
 #define JULIA_SET_H
 
 #include <string>
-#include <complex/complex.h>
+#include "complex/complex.h"
 
-namspace fractal_generator{
+namespace fractal_generator{
 
 typedef unsigned int uint;
 typedef Complex<double> complex;
@@ -28,33 +28,42 @@ struct GraphSettings{
 
 struct ColorSettings{
 	ColorSettings():
-		is_bw(true)
+		is_bw(true),
+		color_offset(1)
 		{}
 	bool is_bw;
+	int color_offset;
 };
+
+struct SetPixelsResults{
+        uint *x_pixels_ptr;
+        uint *y_pixels_ptr;
+        uint *escape_iterations_ptr;
+};
+
 
 //Should only contain data the kernel needs
 struct FractalSettings{
 	FractalSettings():
-		FRACTAL_TYPE(JULIA),
+		type(FRACTAL::JULIA),
 		complex_num(1,1),
-		dimm(512),
+		dimm(64),
 		escape_value(2),
 		max_iterations(10)
 		{}
-	FRACTAL_TYPE type;
+	FRACTAL type;
 	GraphSettings graph_settings;
 	complex complex_num;
 	int dimm;
 	int escape_value;
-	int iterations;
+	int max_iterations;
 };
 
 
 //Returns filename
-std::string GenerateFractal(FractalSettings fractal_settings,ColorSettings color_settings);
+std::string GenerateFractal(FractalSettings fractal_settings, SetPixelsResults *set_pixels_results_ptr);
 
-
+std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_settings, SetPixelsResults results);
 
 }//End namespace
 
