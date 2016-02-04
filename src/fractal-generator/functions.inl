@@ -12,7 +12,7 @@ __device__ uint FractalCalc(
         FractalSettings *settings_ptr,
 	SetPixelsResults *results_ptr
         ){
-	return -1;
+	return 0;
 };
 
 
