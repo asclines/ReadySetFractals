@@ -4,14 +4,15 @@
 #include <colors/color_gen.h>
 #include <stdio.h>
 #include <cuda.h>
+#include <iostream>
 
 namespace fractal_generator{
 
-std::string GenerateFractal(FractalSettings settings, SetPixelsResults *h_set_pixels_results_ptr){
+SetPixelsResults* GenerateFractal(FractalSettings settings){
 
 
 /* Setting up device and host  structures */
-	SetPixelsResults *d_set_pixels_results_ptr;//, *h_set_pixels_results_ptr;
+	SetPixelsResults *d_set_pixels_results_ptr, *h_set_pixels_results_ptr;
         uint *d_x_pixels_ptr, *d_y_pixels_ptr, *d_escape_iterations_ptr;
         uint *h_x_pixels_ptr, *h_y_pixels_ptr, *h_escape_iterations_ptr;
 
@@ -22,7 +23,7 @@ std::string GenerateFractal(FractalSettings settings, SetPixelsResults *h_set_pi
         cudaMalloc((void**)&d_y_pixels_ptr,uint_array_size);
         cudaMalloc((void**)&d_escape_iterations_ptr,uint_array_size);
 
-        h_set_pixels_results_ptr = (SetPixelsResults*)malloc(sizeof(SetPixelsResults));
+        h_set_pixels_results_ptr = (SetPixelsResults *)malloc(sizeof(SetPixelsResults));
         h_x_pixels_ptr = (uint*)malloc(uint_array_size);
         h_y_pixels_ptr = (uint*)malloc(uint_array_size);
         h_escape_iterations_ptr = (uint*)malloc(uint_array_size);
@@ -69,7 +70,9 @@ std::string GenerateFractal(FractalSettings settings, SetPixelsResults *h_set_pi
         cudaFree(d_y_pixels_ptr);
         cudaFree(d_escape_iterations_ptr);
 
-	return "";
+	std::cout << "X1" <<h_set_pixels_results_ptr->escape_iterations_ptr[5] << std::endl;
+	
+	return h_set_pixels_results_ptr;
 }
 
 std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_settings, SetPixelsResults *results_ptr){
@@ -84,7 +87,7 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
 
 
         //Setting pixel index //In future, this should be moved onto GPU
-	for(int i=0; i<fractal_settings.dimm*fractal_settings.dimm; i++){
+	for(int i=0; i<fractal_settings.dimm * fractal_settings.dimm; i++){
 		printf("%d\n",i);
 		BMP_SetPixelIndex(
 			bmp,
@@ -109,7 +112,8 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
         BMP_WriteFile(bmp,image_file_name);
         BMP_Free(bmp);
        // BMP_CHECK_ERROR(stderr,-2);
-
+	
+	
 	return "end"; //image_file_name;
 }
 

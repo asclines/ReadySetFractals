@@ -30,7 +30,7 @@ __global__ void SetPixels(FractalSettings settings, SetPixelsResults *results_pt
 		results_ptr->x_pixels_ptr[thread_id] = x_pixel;
 		results_ptr->y_pixels_ptr[thread_id] = y_pixel;
 		results_ptr->escape_iterations_ptr[thread_id] = depth;	
-//		printf("%u\n",depth);
+		printf("%u\n",depth);
 	}	
 
 }

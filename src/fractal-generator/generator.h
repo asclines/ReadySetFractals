@@ -61,7 +61,7 @@ struct FractalSettings{
 
 
 //Returns filename
-std::string GenerateFractal(FractalSettings fractal_settings, SetPixelsResults *set_pixels_results_ptr);
+SetPixelsResults* GenerateFractal(FractalSettings fractal_settings);//, SetPixelsResults *set_pixels_results_ptr);
 
 std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_settings, SetPixelsResults *results);
 
