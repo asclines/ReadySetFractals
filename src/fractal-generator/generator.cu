@@ -72,7 +72,7 @@ std::string GenerateFractal(FractalSettings settings, SetPixelsResults *h_set_pi
 	return "";
 }
 
-std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_settings, SetPixelsResults results){
+std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_settings, SetPixelsResults *results_ptr){
 	BMP* bmp;
         int max_colors = get_color_list_size();
 
@@ -88,9 +88,9 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
 		printf("%d\n",i);
 		BMP_SetPixelIndex(
 			bmp,
-			results.x_pixels_ptr[i],
-			results.y_pixels_ptr[i],
-			results.escape_iterations_ptr[i]
+			results_ptr->x_pixels_ptr[i],
+			results_ptr->y_pixels_ptr[i],
+			results_ptr->escape_iterations_ptr[i]
 		);
 
 	}
