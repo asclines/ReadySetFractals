@@ -1,0 +1,10 @@
+image-dimension=1024
+image-radius-xy=1.5
+image-graph-x-offset=0
+image-graph-y-offset=0
+image-color-offset=200
+image-in-bw=0
+julia-calc-max-iterations=500
+julia-calc-escape-range=2
+julia-calc-constant-real=-0.74543
+julia-calc-constant-imag=0.11301
