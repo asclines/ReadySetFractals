@@ -11,7 +11,8 @@ template<FRACTAL type>
 __device__ uint FractalCalc(
 	double *x_point_ptr,
 	double *y_point_ptr,
-	FractalSettings *settings_pointer
+	FractalSettings *settings_ptr,
+	SetPixelsResults *results_ptr
 	);
 
 
@@ -20,7 +21,8 @@ template<>
 __device__ uint FractalCalc<FRACTAL::JULIA>(
         double *x_point_ptr,
         double *y_point_ptr,
-        FractalSettings *settings_pointer
+        FractalSettings *settings_ptr,
+	SetPixelsResults *results_ptr
         );
 
 	

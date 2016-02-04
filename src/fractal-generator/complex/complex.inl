@@ -46,7 +46,7 @@ __both__ Complex<T> Complex<T>::operator*(const Complex<T>& other)const{
 };
 
 template<typename T>
-__both__ T abs()const{
+__both__ T Complex<T>::abs()const{
 	T r = real * real;
 	T i = imag * imag;
 

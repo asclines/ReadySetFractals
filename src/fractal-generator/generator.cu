@@ -88,7 +88,7 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
 
         //Setting pixel index //In future, this should be moved onto GPU
 	for(int i=0; i<fractal_settings.dimm * fractal_settings.dimm; i++){
-		printf("%d\n",i);
+		//printf("%d\n",i);
 		BMP_SetPixelIndex(
 			bmp,
 			results_ptr->x_pixels_ptr[i],

@@ -17,9 +17,9 @@ enum class FRACTAL{
 
 struct GraphSettings{
 	GraphSettings():
-		radius(0),
-		x_offset(0),
-		y_offset(0)
+		radius(.1),
+		x_offset(.4),
+		y_offset(-0.330)
 		{}
 	double radius;
 	double x_offset;
@@ -28,8 +28,8 @@ struct GraphSettings{
 
 struct ColorSettings{
 	ColorSettings():
-		is_bw(true),
-		color_offset(1)
+		is_bw(false),
+		color_offset(0)
 		{}
 	bool is_bw;
 	int color_offset;
@@ -46,10 +46,10 @@ struct SetPixelsResults{
 struct FractalSettings{
 	FractalSettings():
 		type(FRACTAL::JULIA),
-		complex_num(1,1),
-		dimm(64),
+		complex_num(-0.45,0.6),
+		dimm(1024),
 		escape_value(2),
-		max_iterations(10)
+		max_iterations(1500)
 		{}
 	FRACTAL type;
 	GraphSettings graph_settings;
@@ -61,7 +61,7 @@ struct FractalSettings{
 
 
 //Returns filename
-SetPixelsResults* GenerateFractal(FractalSettings fractal_settings);//, SetPixelsResults *set_pixels_results_ptr);
+SetPixelsResults* GenerateFractal(FractalSettings fractal_settings);
 
 std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_settings, SetPixelsResults *results);
 

@@ -2,8 +2,6 @@
 
 #include <string>
 
-#include <iostream>
-
 int main(int argc, const char *argv[]){
 	
 	fractal_generator::GraphSettings graph_settings;
@@ -15,8 +13,6 @@ int main(int argc, const char *argv[]){
 
 	results_ptr = fractal_generator::GenerateFractal(fractal_settings);//, &results_ptr);
 
-	std::cout << "X2"<< results_ptr->escape_iterations_ptr[5] << std::endl;
-	
 	std::string file_name = fractal_generator::GenerateImage(color_settings,fractal_settings, results_ptr);
 
 	return 0;
