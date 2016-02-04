@@ -1,5 +1,6 @@
 #define __both__ __device__ __host__
 
+#include <math.h>
 
 /*
  * Addition
@@ -43,5 +44,15 @@ __both__ Complex<T> Complex<T>::operator*(const Complex<T>& other)const{
         Complex result(r,i);
         return result;
 };
+
+template<typename T>
+__both__ T abs()const{
+	T r = real * real;
+	T i = imag * imag;
+
+	return sqrt(r+i);
+	
+};
+
 
 #undef __both__                
