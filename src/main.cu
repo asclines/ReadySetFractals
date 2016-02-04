@@ -2,8 +2,10 @@
 
 #include <string>
 
+using namespace fractal_generator;
+
 int main(int argc, const char *argv[]){
-	
+		
 	fractal_generator::GraphSettings graph_settings;	
 
 	fractal_generator::FractalSettings fractal_settings;

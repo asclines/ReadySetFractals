@@ -70,8 +70,6 @@ SetPixelsResults* GenerateFractal(FractalSettings settings){
         cudaFree(d_y_pixels_ptr);
         cudaFree(d_escape_iterations_ptr);
 
-	std::cout << "X1" <<h_set_pixels_results_ptr->escape_iterations_ptr[5] << std::endl;
-	
 	return h_set_pixels_results_ptr;
 }
 
