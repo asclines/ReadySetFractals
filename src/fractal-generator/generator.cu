@@ -47,7 +47,14 @@ SetPixelsResults* GenerateFractal(FractalSettings settings){
         printf("Starting kernel\n");
 
         //Calling kernel
-        SetPixels<FRACTAL::JULIA><<<blocks,threads>>>(settings,d_set_pixels_results_ptr);
+	switch(settings.type){
+		case FRACTAL::JULIA:
+			 SetPixels<FRACTAL::JULIA><<<blocks,threads>>>(settings,d_set_pixels_results_ptr);
+		break;
+		case FRACTAL::MANDLEBROT:
+			SetPixels<FRACTAL::MANDLEBROT><<<blocks,threads>>>(settings,d_set_pixels_results_ptr);
+                break;
+	}
 
         //Waiting for kernel to finish  
         cudaDeviceSynchronize();
@@ -70,8 +77,6 @@ SetPixelsResults* GenerateFractal(FractalSettings settings){
         cudaFree(d_y_pixels_ptr);
         cudaFree(d_escape_iterations_ptr);
 
-	std::cout << "X1" <<h_set_pixels_results_ptr->escape_iterations_ptr[5] << std::endl;
-	
 	return h_set_pixels_results_ptr;
 }
 

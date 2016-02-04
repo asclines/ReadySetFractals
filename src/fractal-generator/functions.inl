@@ -12,7 +12,7 @@ __device__ uint FractalCalc(
         FractalSettings *settings_ptr,
 	SetPixelsResults *results_ptr
         ){
-	return -1;
+	return 0;
 };
 
 
@@ -41,6 +41,37 @@ __device__ uint FractalCalc<FRACTAL::JULIA>(
 		return depth;
 	}
 };
+
+
+//Mandlebrot
+template<>
+__device__ uint FractalCalc<FRACTAL::MANDLEBROT>(
+        double *x_point_ptr,
+        double *y_point_ptr,
+        FractalSettings *settings_ptr,
+        SetPixelsResults *results_ptr
+        ){
+	
+	complex complex_z = complex(0,0);
+	complex complex_c = complex(*x_point_ptr, *y_point_ptr);
+	int depth = 0;
+
+	while((complex_z.abs() <= settings_ptr->escape_value)
+		&& (depth <= settings_ptr->max_iterations)){
+			depth++;
+			complex_z = complex_z * complex_z;
+			complex_z = complex_z + complex_c;
+	}
+	
+        if(complex_z.abs() <= settings_ptr->escape_value){
+                return 0;
+        } else{
+                return depth;
+        }
+
+}
+
+
 
 
 

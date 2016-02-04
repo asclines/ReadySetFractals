@@ -25,6 +25,15 @@ __device__ uint FractalCalc<FRACTAL::JULIA>(
 	SetPixelsResults *results_ptr
         );
 
+//Mandlebrot
+template<>
+__device__ uint FractalCalc<FRACTAL::MANDLEBROT>(
+        double *x_point_ptr,
+        double *y_point_ptr,
+        FractalSettings *settings_ptr,
+        SetPixelsResults *results_ptr
+        );
+
 	
 
 
