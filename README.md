@@ -35,11 +35,10 @@ System Requirements:
 ## Installation
 
 To install the standalone program to generate a fractal on a Linux machine, it is recommended to use the makefile included in the project. 
-`make install` will install the program at which point it can be run with `./fractal`
+`make install` will install the program at which point it can be run with `./program`
 
 ## Usage
-Open up **settings.txt** to change the fractal settings to meet your preferences. 
-A detailed guide on the settings file is provided here:
+Currently must be harded coded in the `main.cu` file. Will be changed soon
 
 ##Libraries 
 Here is a list of all external libraries used to make this program.
