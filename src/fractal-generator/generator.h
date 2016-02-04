@@ -11,7 +11,8 @@ typedef Complex<double> complex;
 
 
 enum class FRACTAL{
-	JULIA
+	JULIA,
+	MANDLEBROT
 };
 
 

@@ -12,12 +12,12 @@ int main(int argc, const char *argv[]){
 	fractal_generator::ColorSettings color_settings;
 	fractal_generator::SetPixelsResults *results_ptr;
 
-	graph_settings.radius = 0.1;
+	graph_settings.radius = 1;
 	graph_settings.x_offset = 0.4;
 	graph_settings.y_offset = -0.330;
 
 	fractal_settings.graph_settings = graph_settings;
-	fractal_settings.type = FRACTAL::JULIA;
+	fractal_settings.type = FRACTAL::MANDLEBROT;
 	fractal_settings.complex_num = complex(-0.45,0.6);
 	fractal_settings.dimm = 1024;
 	fractal_settings.escape_value = 2;
