@@ -6,6 +6,7 @@ DB = -g -G # For cuda debugging
 
 #Locations
 F = fractal-generator/
+S = settings/
 
 #Names
 FUNC = function #  $(f)functions.h $(f)functions.inl 
@@ -15,7 +16,7 @@ C = complex
 CMPLX = complex #$(c)complex.h $(c)complex.inl
 
 
-OBJS = generator.o
+OBJS = generator.o settings_loader.o
 
 
 #Make commands
@@ -23,13 +24,16 @@ OBJS = generator.o
 all: install objclean
 
 install: main.cu $(OBJS)
-	$(CC) $(CFLAGS) $(IN) generator.o -o program main.cu $(DB) 
+	$(CC) $(CFLAGS) $(IN) $(OBJS) -o program main.cu $(DB) 
 
 generator.o: $(F)generator.h $(F)generator.cu $(F)kernel.h $(F)kernel_internal.h $(F)kernel.inl $(F)kernel.cu
 	$(CC) $(CFLAGS) $(IN) -c $(F)generator.cu $(DB)
 
+settings_loader.o: generator.o  $(S)settings_loader.h $(S)settings_loader.cu
+	$(CC) $(CFLAGS) $(IN) -c $(S)settings_loader.cu $(DB)
+
 clean: 
-	rm *.txt *.o *.bmp program
+	rm  *.o *.bmp program
 
 
 objclean:

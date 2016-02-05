@@ -122,4 +122,17 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
 	return "end"; //image_file_name;
 }
 
+FRACTAL GetFractalTypeFromValue(int value){
+	
+	switch(value){
+		case 1:
+			return FRACTAL::JULIA;
+		case 2:
+			return FRACTAL::MANDLEBROT;
+		default:
+			return FRACTAL::ERROR;
+	}
+}
+
+
 }//End namepsace
