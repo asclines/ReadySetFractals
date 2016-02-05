@@ -17,7 +17,7 @@ int main(int argc, const char *argv[]){
 	graph_settings.y_offset = 0.0;
 
 	fractal_settings.graph_settings = graph_settings;
-	fractal_settings.type = FRACTAL::JULIA;
+	fractal_settings.type = GetFractalTypeFromValue(1);
 	fractal_settings.complex_num = complex(-0.45,0.6);
 	fractal_settings.dimm = 1024;
 	fractal_settings.escape_value = 2;

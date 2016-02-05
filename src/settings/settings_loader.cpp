@@ -6,12 +6,11 @@
 #include <string>
 #include <vector>
 
-#include <juliaset/julia_set.h>
+namespace fractal_generator{
 
 /* Structs & Enums */
 struct Settings{
-	int width;
-	int height;
+	int dimmm;
 	double radius_xy;
 	double x_offset;
 	double y_offset;
@@ -19,22 +18,29 @@ struct Settings{
 	int escape_range;
 	double constant_real;
 	double constant_imag;
+	FRACTAL type;
 	
 	int color_offset;
-	bool image_in_color;
+	bool image_in_bw;
 };
 
 
 
 /* Foward Declarations For Private Methods */
 
-SettingsLoaderError SetJuliaSettings(const Settings settings, JuliaSet *julia_set_ptr);
+SettingsLoaderError SetFractalSettings(
+	const Settings settings,
+	FractalSettings *fractal_settings_ptr,
+	ColorSettings *color_settings_ptr );
 
 SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_list, Settings *settings_ptr);
 
 /* Method Definitions */
 
-SettingsLoaderError LoadSettingsFromSettingsFile(JuliaSet *julia_set_ptr, bool *image_in_color, int *color_offset){
+SiettingsLoaderError LoadSettingsFromSettingsFile(
+			FractalSettings *fractal_settings_ptr,
+                        ColorSettings *color_settings_ptr
+                        );
 	
 	return LoadSettingsFromFile("settings.txt",julia_set_ptr,image_in_color,color_offset);
 
@@ -42,7 +48,11 @@ SettingsLoaderError LoadSettingsFromSettingsFile(JuliaSet *julia_set_ptr, bool *
 
 
 
-SettingsLoaderError LoadSettingsFromFile(std::string file_name, JuliaSet *julia_set_ptr, bool *image_in_color, int *color_offset){
+SettingsLoaderError LoadSettingsFromFile(
+			std::string file_name,
+                        FractalSettings *fractal_settings_ptr,
+                        ColorSettings *color_settings_ptr
+                        );
 	std::vector<std::string> settings_list; //All even indices are the setting key and the following odd index is the setting value
 	std::ifstream settings_file(file_name.c_str());
 	if(settings_file.is_open()){
@@ -73,19 +83,28 @@ SettingsLoaderError LoadSettingsFromFile(std::string file_name, JuliaSet *julia_
 }
 
 
-SettingsLoaderError SetJuliaSettings(const Settings settings, JuliaSet *julia_set_ptr){
-	julia_set_ptr->set_pixels(settings.width, settings.height);
-	julia_set_ptr->set_radius(settings.radius_xy);
-	julia_set_ptr->set_offset(settings.x_offset, settings.y_offset);
-	julia_set_ptr->set_max_iterations(settings.iterations);
-	julia_set_ptr->set_escape_range(settings.escape_range);
-	julia_set_ptr->set_julia_constant(settings.constant_real, settings.constant_imag);
-	
+SettingsLoaderError SetFractalSettings(
+const Settings settings, 
+        FractalSettings *fractal_settings_ptr, 
+        ColorSettings *color_settings_ptr ){
+
+	fractal_settings_ptr->graph_settings.radius = settings.radius_xy;
+	fractal_settings_ptr->graph_settings.x_offset = settings.x_offset;
+	fractal_settings_ptr->graph_settings.y_offset = settings.y_offset;
+
+	fractal_settings_ptr->type = settings.type;
+	fractal_settings_ptr->complex_num = complex(settings.constant_real,settings.constant_imag);
+	fractal_settings_ptr->dimm = settings.dimm;
+	fractal_settings_ptr->escape_value = settings.escape_range;
+	fractal_settings_ptr->max_iterations = settings.iterations;
+
+	color_settings_ptr->is_bw = settings.image_in_bw;
+	color_settings_ptr->color_offset = settings.color_offset;
 
 	return OKAY;	
 }
 
-
+} //End namespace
 	
 /*
 * Go through the settings list in order of appearance
@@ -101,28 +120,18 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 
 	//Only go through the odd indices as they are the ones that contain the values needed for settings struct
 
-	//Expected: value for width
+	//Expected: value for dimm
 	stream << settings_list[1];
 	stream >> settings_int_value_holder;
 	if(stream.fail()){
-		std::cout << "Invalid settings value for image-dimension-width" << std::endl;
+		std::cout << "Invalid settings value for image-dimension" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}
 	stream.clear();
-	settings_ptr->width = settings_int_value_holder;
+	settings_ptr->dimm = settings_int_value_holder;
 	
-	//Expected: value for height		
-	stream << settings_list[3];
-	stream >> settings_int_value_holder;
-	if(stream.fail()){
-		std::cout << "Invalid settings value for image-dimension-height" << std::endl;
-		return INVALID_SETTINGS_VALUE;
-	}
-	stream.clear();
-	settings_ptr->height = settings_int_value_holder;
-
 	//Expected: value for radius xy	
-	stream << settings_list[5];
+	stream << settings_list[3];
 	stream >> settings_double_value_holder;
 	if(stream.fail()){
 		std::cout << "Invalid settings value for image-radius-xy" << std::endl;
@@ -132,7 +141,7 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	settings_ptr->radius_xy = settings_double_value_holder;
 				
 	//Expected: value for x offset
-	stream << settings_list[7];
+	stream << settings_list[5];
 	stream >> settings_double_value_holder;
 	if(stream.fail()){
 		std::cout << "Invalid settings value for image-graph-x-offset" << std::endl;
@@ -142,7 +151,7 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	settings_ptr->x_offset = settings_double_value_holder;
 	
 	//Expected: value for y offset
-	stream << settings_list[9];
+	stream << settings_list[7];
 	stream >> settings_double_value_holder;
 	if(stream.fail()){
 		std::cout << "Invalid settings value for image-graph-y-offset" << std::endl;
@@ -152,7 +161,7 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	settings_ptr->y_offset = settings_double_value_holder;
 	
 	//Expected: value for color offset
-	stream << settings_list[11];
+	stream << settings_list[9];
 	stream >> settings_int_value_holder;
 	if(stream.fail()){
 		std::cout << "Invalid settings value for image-color-offset" << std::endl;
@@ -162,7 +171,7 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	settings_ptr->color_offset = settings_int_value_holder;
 
 	//Expected: value for image in color		
-	stream << settings_list[13];
+	stream << settings_list[11];
 	stream >> settings_int_value_holder;
 	if(stream.fail()){
 		std::cout << "Invalid settings value for image-in-color" << std::endl;
@@ -174,36 +183,47 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	} else if(settings_int_value_holder == 0){
 		settings_bool_value_holder = false;
 	} else{
-		std::cout << "Invalid settings value for image-in-color" << std::endl;
+		std::cout << "Invalid settings value for image-in-bw" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}	
 	settings_ptr->image_in_color = settings_bool_value_holder;
 	
 	//Expected: value for max iterations
-	stream << settings_list[15];
+	stream << settings_list[13];
 	stream >> settings_int_value_holder;
 	if(stream.fail()){
-		std::cout << "Invalid settings value for julia-calc-max-iterations" << std::endl;
+		std::cout << "Invalid settings value for max-iterations" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}
 	stream.clear();
 	settings_ptr->iterations = settings_int_value_holder;
 
 	//Expected: value for escape range
-	stream << settings_list[17];
+	stream << settings_list[15];
 	stream >> settings_int_value_holder;
 	if(stream.fail()){
-		std::cout << "Invalid settings value for julia-calc-escape-range" << std::endl;
+		std::cout << "Invalid settings value for escape-range" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}
 	stream.clear();
 	settings_ptr->escape_range = settings_int_value_holder;
+	
+	//Expected: value for fractal type
+	stream << settings_list[17];
+	sream >> settings_int_value_holder;
+	if(stream.fail()){
+		std::cout << "Invalid settings value for fractal-type-value" << std::endl;
+		return INVALID_SETTINGS_VALE;
+	}
+	stream.clear();
+	settings_ptr->type = GetFractalTypeFromValue(settings_int_value_holder);
+
 
 	//Expected: value for constant real
 	stream << settings_list[19];
 	stream >> settings_double_value_holder;
 	if(stream.fail()){
-		std::cout << "Invalid settings value for julia-calc-constant-real" << std::endl;
+		std::cout << "Invalid settings value for constant-real" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}
 	stream.clear();
@@ -213,7 +233,7 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	stream << settings_list[21];
 	stream >> settings_double_value_holder;
 	if(stream.fail()){
-		std::cout << "Invalid settings value for julia-calc-constant-imag" << std::endl;
+		std::cout << "Invalid settings value for constant-imag" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}
 	stream.clear();

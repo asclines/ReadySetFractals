@@ -29,7 +29,7 @@ generator.o: $(F)generator.h $(F)generator.cu $(F)kernel.h $(F)kernel_internal.h
 	$(CC) $(CFLAGS) $(IN) -c $(F)generator.cu $(DB)
 
 clean: 
-	rm *.txt *.o *.bmp program
+	rm  *.o *.bmp program
 
 
 objclean:

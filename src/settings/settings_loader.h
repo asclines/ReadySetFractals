@@ -1,10 +1,11 @@
 #ifndef SETTINGS_LOADER_H
 #define SETTINGS_LOADER_H
 
+#include <generator.h>
+
 #include <iostream>
 
-/* Forward Declarations */
-class JuliaSet;
+namespace fractal_generator{
 
 /* Structs & Enums */
 enum SettingsLoaderError{
@@ -24,9 +25,16 @@ const std::string settings_loader_error_strings[] = {
 
 
 /* Public Methods */
-SettingsLoaderError LoadSettingsFromSettingsFile(JuliaSet *julia_set_ptr, bool *image_in_color, int *color_offset);
+SettingsLoaderError LoadSettingsFromSettingsFile(
+			FractalSettings *fractal_settings_ptr,
+			ColorSettings *color_settings_ptr
+			);
 
-SettingsLoaderError LoadSettingsFromFile(std::string file_name, JuliaSet *julia_set_ptr, bool *image_in_color, int *color_offset);
+SettingsLoaderError LoadSettingsFromFile(
+			std::string file_name,
+			FractalSettings *fractal_settings_ptr,
+                        ColorSettings *color_settings_ptr
+                        );
 
-
+} //end namespace
 #endif
