@@ -49,8 +49,6 @@ void Set_Color_Palette(BMP *bmp, int iterations, int option){
 	int index = 1;
 	int color_index = 0;
 
-	std::cout << "Delta = " << delta << std::endl
-		<< "Size = " << colors.size() << std::endl;		
 	while(index <= iterations){
 		for(int i=0; i<delta; i++){
 			if(index<=iterations){
