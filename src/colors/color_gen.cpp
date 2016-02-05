@@ -6,7 +6,23 @@
 
 namespace color_gen{
 
+void Set_Old_Color_Palette(BMP *bmp, int iterations, int offset){
+	int max_colors = get_color_list_size();
+
+	if(offset>=0){
+	        for(int i = 0; i < iterations; i++){
+                RGBColor color = Get_RGB_Color((i+offset)%max_colors);
+                BMP_SetPaletteColor(bmp,i,color.red,color.green,color.blue);
+	        }
+	} else{
+		for(int i=0; i<iterations; i++){
+			BMP_SetPaletteColor(bmp,i,i,i,i);
+		}
+	}
+
+}
 void Set_Color_Palette(BMP *bmp, int iterations, int option){
+	
 	RGBColors colors;
 	switch(option){
 		case 1:
@@ -24,6 +40,7 @@ void Set_Color_Palette(BMP *bmp, int iterations, int option){
 			}
 			return;
 	}
+
 
 //	BMP_SetPaletteColor(bmp,0,0,0,0);
 //	BMP_SetPaletteColor(bmp,0,255,255,255);
@@ -49,6 +66,7 @@ void Set_Color_Palette(BMP *bmp, int iterations, int option){
 		index = index+delta;
 		color_index++;
 	}
+
 }
 
 RGBColors Katie_Palette(){

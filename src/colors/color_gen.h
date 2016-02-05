@@ -22,6 +22,8 @@ typedef std::vector<RGBColor> RGBColors;
 
 RGBColor Get_RGB_Color(int index);
 
+void Set_Old_Color_Palette(BMP *bmp, int iterations, int offset);
+
 void Set_Color_Palette(BMP *bmp, int iterations, int option);
 
 /*
