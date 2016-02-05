@@ -102,8 +102,7 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
 	}
 	
         //Setting color palette
-	//TODO take color palette setting from user instead of hardcod	
-	color_gen::Set_Color_Palette(bmp,fractal_settings.max_iterations,2);
+	color_gen::Set_Color_Palette(bmp,fractal_settings.max_iterations,color_settings.color_option);
 
 
         BMP_WriteFile(bmp,image_file_name);

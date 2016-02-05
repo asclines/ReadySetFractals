@@ -26,7 +26,7 @@ void Set_Color_Palette(BMP *bmp, int iterations, int option){
 	}
 
 //	BMP_SetPaletteColor(bmp,0,0,0,0);
-	BMP_SetPaletteColor(bmp,0,255,255,255);
+//	BMP_SetPaletteColor(bmp,0,255,255,255);
 	
 	int delta = iterations/colors.size() + 1;
 	int index = 1;
@@ -34,9 +34,9 @@ void Set_Color_Palette(BMP *bmp, int iterations, int option){
 
 	std::cout << "Delta = " << delta << std::endl
 		<< "Size = " << colors.size() << std::endl;		
-	while(index < iterations){
+	while(index <= iterations){
 		for(int i=0; i<delta; i++){
-			if(index<iterations){
+			if(index<=iterations){
 				BMP_SetPaletteColor(
 					bmp,
 					index,
@@ -55,7 +55,7 @@ RGBColors Katie_Palette(){
 	RGBColors result;
 	result.resize(100);
 	for(int i=0; i<100; i++){
-		result.push_back(Get_RGB_Color(50+i))l
+		result.push_back(Get_RGB_Color(50+i));
 	}
 	return result;
 }
@@ -64,7 +64,7 @@ RGBColors Katie_Palette(){
 RGBColors Bee_Palette(){
         RGBColors result;
         result.resize(100);
-        for(int  =0; i<100; i++){
+        for(int i=0; i<100; i++){
                 result.push_back(Get_RGB_Color(250+i));
         }
         return result;
@@ -73,7 +73,7 @@ RGBColors Bee_Palette(){
 RGBColors Preset1_Palette(){
 	RGBColors result;
 	result.resize(100);
-	for(int  =0; i<100; i++){
+	for(int i=0; i<100; i++){
 		result.push_back(Get_RGB_Color(250+i));
 	}
 	return result;
