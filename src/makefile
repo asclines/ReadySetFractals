@@ -21,7 +21,7 @@ OBJS = generator.o settings_loader.o
 
 #Make commands
 
-all: install objclean
+all: install
 
 install: main.cu $(OBJS)
 	$(CC) $(CFLAGS) $(IN) $(OBJS) -o program main.cu $(DB) 

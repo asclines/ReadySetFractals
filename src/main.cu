@@ -37,6 +37,14 @@ int main(int argc, const char *argv[]){
 		return settings_loader_error;
 	}
 
+
+	 std::cout << "Settings" << std::endl
+                << "\tRadius: " << fractal_settings.graph_settings.radius << std::endl
+		<< "\tIterations: " << fractal_settings.max_iterations << std::endl;
+
+
+
+
 	results_ptr = fractal_generator::GenerateFractal(fractal_settings);
 
 	std::string file_name = fractal_generator::GenerateImage(color_settings,fractal_settings, results_ptr);

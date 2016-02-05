@@ -43,7 +43,7 @@ SetPixelsResults* GenerateFractal(FractalSettings settings){
         threads.y=8;
         blocks.x=(settings.dimm/threads.x);
         blocks.y=(settings.dimm/threads.y);
-
+	
         printf("Starting kernel\n");
 
         //Calling kernel
@@ -106,8 +106,9 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
 	}
 	
         //Setting color palette
-	color_gen::Set_Old_Color_Palette(bmp,fractal_settings.max_iterations,color_settings.color_option);
 
+//	color_gen::Set_Color_Palette(bmp,fractal_settings.max_iterations,color_settings.color_option);
+	color_gen::Set_Old_Color_Palette(bmp,fractal_settings.max_iterations,color_settings.color_option);
 
         BMP_WriteFile(bmp,image_file_name);
         BMP_Free(bmp);
