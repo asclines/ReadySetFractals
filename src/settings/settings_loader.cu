@@ -1,4 +1,5 @@
 #include "settings_loader.h"
+#include <fractal-generator/generator.h>
 
 #include <iostream>
 #include <sstream>
