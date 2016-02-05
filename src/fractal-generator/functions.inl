@@ -99,7 +99,7 @@ __device__ uint FractalCalc<FRACTAL::TRI_JULIA>(
 };
 
 
-}
+
 
 
 
