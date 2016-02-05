@@ -172,7 +172,7 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	stream << settings_list[11];
 	stream >> settings_int_value_holder;
 	if(stream.fail()){
-		std::cout << "Invalid settings value for image-in-color" << std::endl;
+		std::cout << "Invalid settings value for image-in-bw" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}
 	stream.clear();

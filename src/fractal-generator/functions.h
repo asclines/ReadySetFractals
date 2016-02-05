@@ -34,7 +34,16 @@ __device__ uint FractalCalc<FRACTAL::MANDLEBROT>(
         SetPixelsResults *results_ptr
         );
 
-	
+//Tri Symmetric Julia Fractal	
+template<>
+__device__ uint FractalCalc<FRACTAL::TRI_JULIA>(
+        double *x_point_ptr,
+        double *y_point_ptr,
+        FractalSettings *settings_ptr,
+        SetPixelsResults *results_ptr
+        );
+
+
 
 
 }//end namespace

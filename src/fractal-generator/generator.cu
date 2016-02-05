@@ -54,6 +54,10 @@ SetPixelsResults* GenerateFractal(FractalSettings settings){
 		case FRACTAL::MANDLEBROT:
 			SetPixels<FRACTAL::MANDLEBROT><<<blocks,threads>>>(settings,d_set_pixels_results_ptr);
                 break;
+		case FRACTAL::TRI_JULIA:
+                         SetPixels<FRACTAL::TRI_JULIA><<<blocks,threads>>>(settings,d_set_pixels_results_ptr);
+                break;
+
 	}
 
         //Waiting for kernel to finish  
@@ -102,7 +106,7 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
 	}
 	
         //Setting color palette
-	color_gen::Set_Color_Palette(bmp,fractal_settings.max_iterations,color_settings.color_option);
+	color_gen::Set_Old_Color_Palette(bmp,fractal_settings.max_iterations,color_settings.color_option);
 
 
         BMP_WriteFile(bmp,image_file_name);
@@ -120,6 +124,9 @@ FRACTAL GetFractalTypeFromValue(int value){
 			return FRACTAL::JULIA;
 		case 2:
 			return FRACTAL::MANDLEBROT;
+		case 3:
+			std::cout << "Tri Julia Selected" << std::endl;			
+			return FRACTAL::TRI_JULIA;
 		default:
 			return FRACTAL::ERROR;
 	}
