@@ -82,7 +82,7 @@ SetPixelsResults* GenerateFractal(FractalSettings settings){
 
 std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_settings, SetPixelsResults *results_ptr){
 	BMP* bmp;
-        int max_colors = get_color_list_size();
+        int max_colors = color_gen::get_color_list_size();
 
 	char* image_file_name = "output_image.bmp";	
 
@@ -107,7 +107,7 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
         BMP_SetPaletteColor(bmp,1,0,0,0);
         for(int i = 1; i < fractal_settings.max_iterations; i++){
                 if(!color_settings.is_bw){
-                        RGBColor color = get_rgb_color((i+color_settings.color_offset)%max_colors);
+                       color_gen::RGBColor color = color_gen::get_rgb_color((i+color_settings.color_offset)%max_colors);
                         BMP_SetPaletteColor(bmp,i,color.red,color.green,color.blue);
                 } else{ //Not in color
                         BMP_SetPaletteColor(bmp,i,i,i,i);
