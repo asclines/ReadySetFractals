@@ -13,7 +13,8 @@ typedef Complex<double> complex;
 enum class FRACTAL{
 	ERROR = 0,
 	JULIA = 1,
-	MANDLEBROT = 2
+	MANDLEBROT = 2,
+	TRI_JULIA = 3
 };
 
 
