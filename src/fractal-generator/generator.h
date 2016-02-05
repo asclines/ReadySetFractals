@@ -11,8 +11,9 @@ typedef Complex<double> complex;
 
 
 enum class FRACTAL{
-	JULIA,
-	MANDLEBROT
+	ERROR = 0,
+	JULIA = 1,
+	MANDLEBROT = 2
 };
 
 
@@ -65,6 +66,10 @@ struct FractalSettings{
 SetPixelsResults* GenerateFractal(FractalSettings fractal_settings);
 
 std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_settings, SetPixelsResults *results);
+
+/* Util methods */
+
+FRACTAL GetFractalTypeFromValue(int value);
 
 }//End namespace
 
