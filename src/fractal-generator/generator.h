@@ -31,10 +31,10 @@ struct GraphSettings{
 struct ColorSettings{
 	ColorSettings():
 		is_bw(false),
-		color_offset(0)
+		color_option(0)
 		{}
 	bool is_bw;
-	int color_offset;
+	int color_option;
 };
 
 struct SetPixelsResults{

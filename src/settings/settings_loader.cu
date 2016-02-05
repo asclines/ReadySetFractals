@@ -21,7 +21,7 @@ struct Settings{
 	double constant_imag;
 	FRACTAL type;
 	
-	int color_offset;
+	int color_option;
 	bool image_in_bw;
 };
 
@@ -98,7 +98,7 @@ const Settings settings,
 	fractal_settings_ptr->max_iterations = settings.iterations;
 
 	color_settings_ptr->is_bw = settings.image_in_bw;
-	color_settings_ptr->color_offset = settings.color_offset;
+	color_settings_ptr->color_option = settings.color_option;
 
 	return OKAY;	
 }
@@ -162,11 +162,11 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	stream << settings_list[9];
 	stream >> settings_int_value_holder;
 	if(stream.fail()){
-		std::cout << "Invalid settings value for image-color-offset" << std::endl;
+		std::cout << "Invalid settings value for image-color-option" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}
 	stream.clear();
-	settings_ptr->color_offset = settings_int_value_holder;
+	settings_ptr->color_option = settings_int_value_holder;
 
 	//Expected: value for image in color		
 	stream << settings_list[11];

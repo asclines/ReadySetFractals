@@ -1,12 +1,14 @@
 #include "color_gen.h"
 
+namespace color_gen{
+
 //Returns a hardcoded number that is the number of cases in the switch below
 int get_color_list_size(){
 	return 554;
 }
 
 
-RGBColor get_rgb_color(int index){
+RGBColor Get_RGB_Color(int index){
 	RGBColor color;
 	switch(index){
 		case 0:
@@ -1779,3 +1781,6 @@ RGBColor getRed(int index){
         return;
     }
 }
+
+
+} //End namespace
