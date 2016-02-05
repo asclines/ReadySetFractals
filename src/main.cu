@@ -1,4 +1,5 @@
 #include "fractal-generator/generator.h"
+#include "settings/settings_loader.h"
 
 #include <string>
 

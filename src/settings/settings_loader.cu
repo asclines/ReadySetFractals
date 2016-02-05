@@ -11,7 +11,7 @@ namespace fractal_generator{
 
 /* Structs & Enums */
 struct Settings{
-	int dimmm;
+	int dimm;
 	double radius_xy;
 	double x_offset;
 	double y_offset;
@@ -38,12 +38,12 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 
 /* Method Definitions */
 
-SiettingsLoaderError LoadSettingsFromSettingsFile(
+SettingsLoaderError LoadSettingsFromSettingsFile(
 			FractalSettings *fractal_settings_ptr,
                         ColorSettings *color_settings_ptr
-                        );
+                        ){
 	
-	return LoadSettingsFromFile("settings.txt",julia_set_ptr,image_in_color,color_offset);
+	return LoadSettingsFromFile("settings.txt",fractal_settings_ptr,color_settings_ptr);
 
 }
 
@@ -53,7 +53,7 @@ SettingsLoaderError LoadSettingsFromFile(
 			std::string file_name,
                         FractalSettings *fractal_settings_ptr,
                         ColorSettings *color_settings_ptr
-                        );
+                        ){
 	std::vector<std::string> settings_list; //All even indices are the setting key and the following odd index is the setting value
 	std::ifstream settings_file(file_name.c_str());
 	if(settings_file.is_open()){
@@ -70,9 +70,7 @@ SettingsLoaderError LoadSettingsFromFile(
 		Settings settings;
 		SettingsLoaderError error = ExtractSettingsFromVector(settings_list, &settings);
 		if(error == OKAY){
-			*image_in_color = settings.image_in_color;
-			*color_offset = settings.color_offset;
-			return SetJuliaSettings(settings, julia_set_ptr);
+			return SetFractalSettings(settings, fractal_settings_ptr, color_settings_ptr);
 		} else{
 			return error;
 		}
@@ -105,7 +103,6 @@ const Settings settings,
 	return OKAY;	
 }
 
-} //End namespace
 	
 /*
 * Go through the settings list in order of appearance
@@ -187,7 +184,7 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 		std::cout << "Invalid settings value for image-in-bw" << std::endl;
 		return INVALID_SETTINGS_VALUE;
 	}	
-	settings_ptr->image_in_color = settings_bool_value_holder;
+	settings_ptr->image_in_bw = settings_bool_value_holder;
 	
 	//Expected: value for max iterations
 	stream << settings_list[13];
@@ -211,10 +208,10 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	
 	//Expected: value for fractal type
 	stream << settings_list[17];
-	sream >> settings_int_value_holder;
+	stream >> settings_int_value_holder;
 	if(stream.fail()){
 		std::cout << "Invalid settings value for fractal-type-value" << std::endl;
-		return INVALID_SETTINGS_VALE;
+		return INVALID_SETTINGS_VALUE;
 	}
 	stream.clear();
 	settings_ptr->type = GetFractalTypeFromValue(settings_int_value_holder);
@@ -243,3 +240,6 @@ SettingsLoaderError ExtractSettingsFromVector(std::vector<std::string> settings_
 	return OKAY;
 
 }
+
+
+} //End namespace

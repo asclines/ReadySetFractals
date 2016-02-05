@@ -1,7 +1,7 @@
 #ifndef SETTINGS_LOADER_H
 #define SETTINGS_LOADER_H
 
-#include <generator.h>
+#include <fractal-generator/generator.h>
 
 #include <iostream>
 
