@@ -24,7 +24,7 @@ OBJS = generator.o settings_loader.o
 all: install objclean
 
 install: main.cu $(OBJS)
-	$(CC) $(CFLAGS) $(IN) generator.o -o program main.cu $(DB) 
+	$(CC) $(CFLAGS) $(IN) $(OBJS) -o program main.cu $(DB) 
 
 generator.o: $(F)generator.h $(F)generator.cu $(F)kernel.h $(F)kernel_internal.h $(F)kernel.inl $(F)kernel.cu
 	$(CC) $(CFLAGS) $(IN) -c $(F)generator.cu $(DB)
