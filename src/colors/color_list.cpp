@@ -8,7 +8,7 @@ int get_color_list_size(){
 }
 
 
-RGBColor get_rgb_color(int index){
+RGBColor Get_RGB_Color(int index){
 	RGBColor color;
 	switch(index){
 		case 0:

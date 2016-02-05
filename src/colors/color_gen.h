@@ -1,6 +1,9 @@
 #ifndef COLOR_GEN_H
 #define COLOR_GEN_H
 
+#include <vector>
+#include <qdbmp/qdbmp.h>
+
 namespace color_gen{
 
 struct RGBColor{
@@ -15,9 +18,25 @@ struct RGBColor{
 	}
 };
 
+typedef std::vector<RGBColor> RGBColors;
 
-RGBColor get_rgb_color(int index);
+RGBColor Get_RGB_Color(int index);
 
+void Set_Color_Palette(BMP *bmp, int iterations, int option);
+
+/*
+	Color Palette Methods
+*/
+
+
+//Option 1
+RGBColors Preset1_Palette();
+
+//Option 2
+RGBColors Katie_Palette();
+
+//Option 3
+RGBColors Bee_Palette();
 
 
 
@@ -25,4 +44,5 @@ int get_color_list_size();
 
 } //End namespace
 #include "color_list.cpp"
+#include "color_gen.cpp"
 #endif

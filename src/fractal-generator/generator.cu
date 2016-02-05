@@ -90,10 +90,8 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
 
 	printf("Generating image\n");
 
-
         //Setting pixel index //In future, this should be moved onto GPU
 	for(int i=0; i<fractal_settings.dimm * fractal_settings.dimm; i++){
-		//printf("%d\n",i);
 		BMP_SetPixelIndex(
 			bmp,
 			results_ptr->x_pixels_ptr[i],
@@ -104,15 +102,9 @@ std::string GenerateImage(ColorSettings color_settings, FractalSettings fractal_
 	}
 	
         //Setting color palette
-        BMP_SetPaletteColor(bmp,1,0,0,0);
-        for(int i = 1; i < fractal_settings.max_iterations; i++){
-                if(!color_settings.is_bw){
-                       color_gen::RGBColor color = color_gen::get_rgb_color((i+color_settings.color_offset)%max_colors);
-                        BMP_SetPaletteColor(bmp,i,color.red,color.green,color.blue);
-                } else{ //Not in color
-                        BMP_SetPaletteColor(bmp,i,i,i,i);
-                }
-        }
+	//TODO take color palette setting from user instead of hardcod	
+	color_gen::Set_Color_Palette(bmp,fractal_settings.max_iterations,2);
+
 
         BMP_WriteFile(bmp,image_file_name);
         BMP_Free(bmp);
