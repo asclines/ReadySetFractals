@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPTIONS="-f 2 -d 512"
+OPTIONS="-f 2 -d 512 -e 2"
 
 echo Cleaving up files from previous run
 rm run_log.txt &>/dev/null

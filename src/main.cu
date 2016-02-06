@@ -18,18 +18,12 @@ void GetOptions(
 
 int main(int argc, char **argv){
 
-	
-
 	fractal_generator::GraphSettings graph_settings;	
         fractal_generator::FractalSettings fractal_settings;
         fractal_generator::ColorSettings color_settings;
         fractal_generator::SetPixelsResults *results_ptr;
 
-	
-
-
-
-
+/*	
 	graph_settings.radius = 1;
 	graph_settings.x_offset = 0.0;
 	graph_settings.y_offset = 0.0;
@@ -43,6 +37,8 @@ int main(int argc, char **argv){
 
 	color_settings.is_bw = false;
 	color_settings.color_option = 100;
+*/
+
 /*
 	SettingsLoaderError settings_loader_error = LoadSettingsFromSettingsFile(
 							&fractal_settings,
@@ -97,7 +93,7 @@ void GetOptions(
                 e-escape value
                 i-max iterations
         */
-        while((option = getopt(argc,argv,"f:d:")) != -1){
+        while((option = getopt(argc,argv,"f:d:e:")) != -1){
                 switch(option){
                         case 'f': //Fractal Type
         			stream << optarg;
@@ -111,6 +107,12 @@ void GetOptions(
 				fractal_settings_ptr->dimm = opts_int_holder;
 				stream.clear();
 				break;
+			case 'e': //Escape range
+				stream << optarg;
+				stream >> opts_int_holder;
+				fractal_settings_ptr->escape_value = opts_int_holder;
+				stream.clear();
+				break;	
 			case '?':
 				error = 1;
 				break;
