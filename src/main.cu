@@ -76,7 +76,7 @@ void GetOptions(
 	char **argv,
         GraphSettings *graph_settings_ptr,
         FractalSettings *fractal_settings_ptr,
-        ColorSettings *color_settings
+        ColorSettings *color_settings_ptr
         ){
 
         extern char *optarg;
@@ -84,8 +84,9 @@ void GetOptions(
 
 	int error=0;
 	int option;
-	
 		
+	double constant_imag = -0.65;        	
+	double constant_real = 0.45;
 
         /*
                 f-fractal type
@@ -95,13 +96,15 @@ void GetOptions(
 		r-radius
 		x-x offset
 		y-y offset
-		
+		c-color option/seed
+		I-imagine
+		R-real
         */
-        while((option = getopt(argc,argv,"f:d:e:m:r:x:y:")) != -1){
+        while((option = getopt(argc,argv,"f:d:e:m:r:x:y:c:I:R:")) != -1){
 		std::stringstream stream;
 		double opts_double_holder;
 		int opts_int_holder;
-        	
+
 		stream << optarg;
 		switch(option){
                         case 'f': //Fractal Type
@@ -132,7 +135,16 @@ void GetOptions(
 				stream >> opts_double_holder;
 				graph_settings_ptr->y_offset = opts_double_holder;
 				break;
-	
+			case 'c': //Color seed
+				stream >> opts_int_holder;
+				color_settings_ptr->color_option = opts_int_holder;
+				break;
+			case 'I': //Image number
+				stream >> constant_imag;
+				break;
+			case 'R': //Real number
+				stream >> constant_real;
+				break;
 			case '?':
 				error = 1;
 				break;
@@ -142,6 +154,7 @@ void GetOptions(
 
         }
 
+	fractal_settings_ptr->complex_num = complex(constant_real,constant_imag);
 	if(error >0){
 		//TODO Print usage
 	}
