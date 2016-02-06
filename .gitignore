@@ -1,10 +1,6 @@
 *.o
-*.sh
 
 #Program outputs
-src/fractal
-src/image.bmp
-
-#Scripts and related files for asclines
-scripts/*
+src/program
+src/output_image.bmp
 src/run_log.txt

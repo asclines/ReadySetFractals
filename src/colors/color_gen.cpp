@@ -43,7 +43,7 @@ void Set_Color_Palette(BMP *bmp, int iterations, int option){
 
 
 //	BMP_SetPaletteColor(bmp,0,0,0,0);
-//	BMP_SetPaletteColor(bmp,0,255,255,255);
+	BMP_SetPaletteColor(bmp,0,255,255,255);
 	
 	int delta = iterations/colors.size() + 1;
 	int index = 1;

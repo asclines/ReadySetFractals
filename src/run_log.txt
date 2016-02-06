@@ -1,0 +1,1 @@
+nvcc -std=c++11 -I ./ -I ./include  generator.o settings_loader.o -o program main.cu -g -G  
