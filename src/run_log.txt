@@ -1,1 +1,55 @@
+nvcc -std=c++11 -I ./ -I ./include  -c fractal-generator/generator.cu -g -G 
+./include/qdbmp/qdbmp.c(379): warning: integer conversion resulted in a change of sign
+
+./include/qdbmp/qdbmp.c(396): warning: integer conversion resulted in a change of sign
+
+./include/qdbmp/qdbmp.c(413): warning: integer conversion resulted in a change of sign
+
+./include/qdbmp/qdbmp.c(432): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(432): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(472): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(472): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(510): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(510): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(544): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(544): warning: pointless comparison of unsigned integer with zero
+
+fractal-generator/generator.cu(91): warning: conversion from a string literal to "char *" is deprecated
+
+./include/qdbmp/qdbmp.c(379): warning: integer conversion resulted in a change of sign
+
+./include/qdbmp/qdbmp.c(396): warning: integer conversion resulted in a change of sign
+
+./include/qdbmp/qdbmp.c(413): warning: integer conversion resulted in a change of sign
+
+./include/qdbmp/qdbmp.c(432): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(432): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(472): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(472): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(510): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(510): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(544): warning: pointless comparison of unsigned integer with zero
+
+./include/qdbmp/qdbmp.c(544): warning: pointless comparison of unsigned integer with zero
+
+fractal-generator/generator.cu(91): warning: conversion from a string literal to "char *" is deprecated
+
+nvcc -std=c++11 -I ./ -I ./include  -c settings/settings_loader.cu -g -G 
+settings/settings_loader.cu(81): warning: statement is unreachable
+
+settings/settings_loader.cu(81): warning: statement is unreachable
+
 nvcc -std=c++11 -I ./ -I ./include  generator.o settings_loader.o -o program main.cu -g -G  

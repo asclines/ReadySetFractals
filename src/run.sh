@@ -1,5 +1,7 @@
 #!/bin/bash
 
+OPTIONS="-f 2 -d 512"
+
 echo Cleaving up files from previous run
 rm run_log.txt &>/dev/null
 rm output_image.bmp  &> run_log.txt
@@ -14,7 +16,7 @@ getopts ":s" opt;
                 time srun ./program
         else
                 echo "Running normally"
-                time ./program
+                time ./program $OPTIONS
         fi
 echo Loading image
 eog output_image.bmp&
