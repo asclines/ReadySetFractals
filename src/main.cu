@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <string>
 #include <sstream>
+#include <iostream>
 
 using namespace fractal_generator;
 
@@ -131,7 +132,8 @@ void GetOptions(
 
 	fractal_settings_ptr->complex_num = complex(constant_real,constant_imag);
 	if(error >0){
-		//TODO Print usage
+		std::cout << "usage: " << argv[0] << " [-f type] [-d dimm] [-e escape] [-m iterations] [-r radius] [-x x_offset] [-y y_offset] [-c color] [-I imaginary] [-R real] " << std::endl;
+		exit(1);
 	}
 
 
