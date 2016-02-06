@@ -91,9 +91,9 @@ void GetOptions(
                 f-fractal type
                 d-dimm
                 e-escape value
-                i-max iterations
+                m-max iterations
         */
-        while((option = getopt(argc,argv,"f:d:e:")) != -1){
+        while((option = getopt(argc,argv,"f:d:e:m:")) != -1){
                 switch(option){
                         case 'f': //Fractal Type
         			stream << optarg;
@@ -113,6 +113,12 @@ void GetOptions(
 				fractal_settings_ptr->escape_value = opts_int_holder;
 				stream.clear();
 				break;	
+			case 'm': //Max iterations
+				stream << optarg;
+				stream >> opts_int_holder;
+				fractal_settings_ptr->max_iterations = opts_int_holder;
+				stream.clear();
+				break;
 			case '?':
 				error = 1;
 				break;
