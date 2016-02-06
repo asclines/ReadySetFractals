@@ -53,6 +53,8 @@ int main(int argc, char **argv){
 */
 
 	GetOptions(argc,argv,&graph_settings,&fractal_settings,&color_settings);
+	fractal_settings.graph_settings = graph_settings;
+
 
 	 std::cout << "Settings" << std::endl
                 << "\tRadius: " << fractal_settings.graph_settings.radius << std::endl
@@ -83,47 +85,60 @@ void GetOptions(
 	int error=0;
 	int option;
 	
-	std::stringstream stream;
 		
-	int opts_int_holder;
 
         /*
                 f-fractal type
                 d-dimm
                 e-escape value
                 m-max iterations
+		r-radius
+		x-x offset
+		y-y offset
+		
         */
-        while((option = getopt(argc,argv,"f:d:e:m:")) != -1){
-                switch(option){
+        while((option = getopt(argc,argv,"f:d:e:m:r:x:y:")) != -1){
+		std::stringstream stream;
+		double opts_double_holder;
+		int opts_int_holder;
+        	
+		stream << optarg;
+		switch(option){
                         case 'f': //Fractal Type
-        			stream << optarg;
 				stream >> opts_int_holder;
 	                        fractal_settings_ptr->type = GetFractalTypeFromValue(opts_int_holder);
-				stream.clear();
 				break;
 			case 'd': //Dimmensions for square
-				stream << optarg;
 				stream >> opts_int_holder;
 				fractal_settings_ptr->dimm = opts_int_holder;
-				stream.clear();
 				break;
 			case 'e': //Escape range
-				stream << optarg;
 				stream >> opts_int_holder;
 				fractal_settings_ptr->escape_value = opts_int_holder;
-				stream.clear();
 				break;	
 			case 'm': //Max iterations
-				stream << optarg;
 				stream >> opts_int_holder;
 				fractal_settings_ptr->max_iterations = opts_int_holder;
-				stream.clear();
 				break;
+			case 'r': //Radius			
+				stream >> opts_double_holder;
+				graph_settings_ptr->radius = opts_double_holder;
+				break;
+			case 'x': //X Offset
+				stream >> opts_double_holder;
+				graph_settings_ptr->x_offset = opts_double_holder;
+				break;
+			case 'y': //Y Offset
+				stream >> opts_double_holder;
+				graph_settings_ptr->y_offset = opts_double_holder;
+				break;
+	
 			case '?':
 				error = 1;
 				break;
 
                 }
+		stream.clear();
 
         }
 
