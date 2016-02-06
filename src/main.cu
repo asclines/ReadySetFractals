@@ -22,23 +22,6 @@ int main(int argc, char **argv){
         fractal_generator::FractalSettings fractal_settings;
         fractal_generator::ColorSettings color_settings;
         fractal_generator::SetPixelsResults *results_ptr;
-
-/*	
-	graph_settings.radius = 1;
-	graph_settings.x_offset = 0.0;
-	graph_settings.y_offset = 0.0;
-
-	fractal_settings.graph_settings = graph_settings;
-	fractal_settings.type = GetFractalTypeFromValue(1);
-	fractal_settings.complex_num = complex(-0.45,0.6);
-	fractal_settings.dimm = 1024;
-	fractal_settings.escape_value = 2;
-	fractal_settings.max_iterations = 100;
-
-	color_settings.is_bw = false;
-	color_settings.color_option = 100;
-*/
-
 /*
 	SettingsLoaderError settings_loader_error = LoadSettingsFromSettingsFile(
 							&fractal_settings,
@@ -54,14 +37,6 @@ int main(int argc, char **argv){
 
 	GetOptions(argc,argv,&graph_settings,&fractal_settings,&color_settings);
 	fractal_settings.graph_settings = graph_settings;
-
-
-	 std::cout << "Settings" << std::endl
-                << "\tRadius: " << fractal_settings.graph_settings.radius << std::endl
-		<< "\tIterations: " << fractal_settings.max_iterations << std::endl;
-
-
-
 
 	results_ptr = fractal_generator::GenerateFractal(fractal_settings);
 
