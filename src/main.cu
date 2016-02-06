@@ -92,8 +92,8 @@ void GetOptions(
 				fractal_settings_ptr->dimm = opts_int_holder;
 				break;
 			case 'e': //Escape range
-				stream >> opts_int_holder;
-				fractal_settings_ptr->escape_value = opts_int_holder;
+				stream >> opts_double_holder;
+				fractal_settings_ptr->escape_value = opts_double_holder;
 				break;	
 			case 'm': //Max iterations
 				stream >> opts_int_holder;
