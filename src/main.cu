@@ -76,7 +76,7 @@ void GetOptions(
 		I-imagine
 		R-real
         */
-        while((option = getopt(argc,argv,"f:d:e:m:r:x:y:c:I:R:")) != -1){
+        while((option = getopt(argc,argv,"hf:d:e:m:r:x:y:c:I:R:")) != -1){
 		std::stringstream stream;
 		double opts_double_holder;
 		int opts_int_holder;
@@ -92,8 +92,8 @@ void GetOptions(
 				fractal_settings_ptr->dimm = opts_int_holder;
 				break;
 			case 'e': //Escape range
-				stream >> opts_int_holder;
-				fractal_settings_ptr->escape_value = opts_int_holder;
+				stream >> opts_double_holder;
+				fractal_settings_ptr->escape_value = opts_double_holder;
 				break;	
 			case 'm': //Max iterations
 				stream >> opts_int_holder;
@@ -121,6 +121,7 @@ void GetOptions(
 			case 'R': //Real number
 				stream >> constant_real;
 				break;
+			case 'h': //Help option
 			case '?':
 				error = 1;
 				break;

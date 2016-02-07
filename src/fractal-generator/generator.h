@@ -51,14 +51,14 @@ struct FractalSettings{
 		type(FRACTAL::JULIA),
 		complex_num(-0.45,0.6),
 		dimm(1024),
-		escape_value(2),
+		escape_value(2.0),
 		max_iterations(1500)
 		{}
 	FRACTAL type;
 	GraphSettings graph_settings;
 	complex complex_num;
 	int dimm;
-	int escape_value;
+	double escape_value;
 	int max_iterations;
 };
 
