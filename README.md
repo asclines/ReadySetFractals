@@ -37,6 +37,13 @@ To install the standalone program to generate a fractal on a Linux machine, it i
 `make install` will install the program at which point it can be run with `./program`
 
 ## Usage
+The program has two methdods of accepting user input for fractal settings, from a text file and as options when calling the program from the command line.
+A quick note on how the program sets the preferences for the fractal.
+First, the program looks at the setting file for preferences.
+Second, the program looks at the command line options, these options will ovveride anything set in the text file.
+This is done to make it easier to make slight changes to the fractal on the fly as the command line arguments are all optional. 
+
+### using text file
 The program loads the user preferences from `settings.txt`
 The settings file is formated such that for each line there is a key/value pair in the format `key=value` with no spaces. The `settings.txt` looks like this:
 ```
@@ -53,6 +60,10 @@ constant-real=-0.74543
 constant-imag=0.11301
 ```
 The left side of the '=' should not be altered. The user can change the right side of the '=' to generate different fractals. While this isn't the final goal for how to adjust the fractals, its the current way to do it without having to rebuild the program each time the fractal is to be changed.
+
+### from command line
+In addition to using the text file, the user can adjust the fractal settings from the CLI using this command.
+'./program [-f type] [-d dimm] [-e escape] [-m iterations] [-r radius] [-x x_offset] [-y y_offset] [-c color] [-I imaginary] [-R real]'
 
 ##Libraries 
 Here is a list of all external libraries used to make this program.
